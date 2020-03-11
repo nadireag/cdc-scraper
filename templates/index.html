@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CDC</title>
+  <link rel="stylesheet" href="../static/style.css" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+    <!-- create a div for jumbotron -->
+    <div class="contaier-fluid">
+        <div class="jumbotron text-center">
+            <h2 class="display-4">Scrape CDC's Website</h2>
+            <p class="lead">Learn about latest Centers for Disease Control and Prevention updates. </p>
+            <a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a>
+        </div>
+    </div>
+    <!-- create a container for the content -->
+    <div class="container">
+        <!-- create a div for the first image and text -->
+        <div class="col-md-12">
+            <h3 align="center">Top News on CDC</h3>
+            <img class="thumbail" src="{{cdc_data.first_img}}" width="100%" > 
+            <p>{{cdc_data.first_info}}</p>   
+        </div>
+        <!-- cretae a div for the secondary images and texts -->
+        <h3 align="center">More CDC News</h3>
+        <hr>
+        <div class="card">
+            {% for item in cdc_data.card_data %}
+            <div class="col-md-4">
+                <img class="thumbnail" src="{{item.card_img}}" width="100%" alt="{{item.card_titles}}"> 
+                <div class="card-body">
+                    <h4 class="card-title">{{item.card_titles}}</h4> 
+                    <p>{{item.card_text}}</p>   
+                </div>
+            </div>
+            {% endfor %}
+        </div> 
+        <div class="col-md-6">
+            <h3>{{cdc_data.header}}</h3>
+            {% for item in cdc_data.item_list %}
+            <li>{{item}}</li>
+            {% endfor  %}
+
+        </div>
+
+    </div>
+
+</body>
+</html>
